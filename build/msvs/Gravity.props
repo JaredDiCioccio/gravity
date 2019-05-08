@@ -13,6 +13,7 @@
 
 	<!-- Third Party -->
     <JavaRoot>$(JAVA_HOME)</JavaRoot>
+    <PythonRoot>$(PYTHONHOME)</PythonRoot>
     <BoostRoot>$(BOOST_HOME)</BoostRoot>
 	<LexCommand>$(LEX_CMD)</LexCommand>
 	<YaccCommand>$(YACC_CMD)</YaccCommand>
@@ -31,6 +32,10 @@
     </BuildMacro>
     <BuildMacro Include="JavaRoot">
       <Value>$(JavaRoot)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="PythonRoot">
+      <Value>$(PythonRoot)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
     <BuildMacro Include="BinDir">
