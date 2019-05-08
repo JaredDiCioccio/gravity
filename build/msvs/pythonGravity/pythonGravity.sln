@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pythonGravity", "pythonGravity.vcxproj", "{F1FA3201-D9FB-4B75-A997-407F6DFE660E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E} = {279EF9D4-4459-4640-860F-44B0F1B6F15E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "swig", "swig\swig.vcxproj", "{279EF9D4-4459-4640-860F-44B0F1B6F15E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release2013|Win32 = Release2013|Win32
+		Release2013|x64 = Release2013|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Debug|Win32.Build.0 = Debug|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Debug|x64.ActiveCfg = Debug|x64
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Debug|x64.Build.0 = Debug|x64
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release|Win32.ActiveCfg = Release|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release|Win32.Build.0 = Release|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release|x64.ActiveCfg = Release|x64
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release|x64.Build.0 = Release|x64
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release2013|Win32.ActiveCfg = Release2013|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release2013|Win32.Build.0 = Release2013|Win32
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release2013|x64.ActiveCfg = Release2013|x64
+		{F1FA3201-D9FB-4B75-A997-407F6DFE660E}.Release2013|x64.Build.0 = Release2013|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|Win32.Build.0 = Debug|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|x64.ActiveCfg = Release2010|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|x64.Build.0 = Debug|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|x64.Build.2 = Debug2012|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|x64.Build.4 = Release2013|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Debug|x64.Build.6 = Release2010|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release|Win32.ActiveCfg = Release|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release|Win32.Build.0 = Release|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release|x64.ActiveCfg = Release|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release|x64.Build.0 = Release|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release2013|Win32.ActiveCfg = Release2013|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release2013|Win32.Build.0 = Release2013|Win32
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release2013|x64.ActiveCfg = Release2013|x64
+		{279EF9D4-4459-4640-860F-44B0F1B6F15E}.Release2013|x64.Build.0 = Release2013|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
