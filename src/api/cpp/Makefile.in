@@ -52,7 +52,7 @@ VPATH          = @srcdir@
 LINK=$(CXX)
 
 #Locations
-MYPROTO_DIR=../protobufs
+MYPROTO_DIR=../protobufs/gravity
 MY_PROTOBUF_BUILD_DIR=./protobuf
 
 #Libraries

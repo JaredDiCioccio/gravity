@@ -44,7 +44,7 @@ srcdir           = @srcdir@
 VPATH            = @srcdir@ 
 
 #Protobuf sources (.proto)
-PROTO_DIR=../protobufs
+PROTO_DIR=../protobufs/gravity
 
 #Java directories
 JAVASRC_DIR=src/java
