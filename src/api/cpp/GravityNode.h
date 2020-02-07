@@ -75,7 +75,8 @@ namespace GravityReturnCodes
         INTERRUPTED = -9, ///< Received an interruption.
         NO_SERVICE_PROVIDER = -10, ///< No service provider found.
         NO_PORTS_AVAILABLE = -11, ///< No ports available
-		INVALID_PARAMETER = -12 ///< Invalid parameter. (Ex: entered a negative number for time)
+		INVALID_PARAMETER = -12, ///< Invalid parameter. (Ex: entered a negative number for time)
+        FORBIDDEN_SUBSCRIPTION = -13 ///< Forbidden operation (subscribing to forbidden data product id)
     };
 }
 typedef GravityReturnCodes::Codes GravityReturnCode;

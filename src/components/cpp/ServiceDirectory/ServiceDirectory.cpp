@@ -52,6 +52,8 @@
 #include <locale>
 
 #define REGISTERED_PUBLISHERS "RegisteredPublishers"
+#define SERVICE_DIRECTORY_DOMAIN_DETAILS "ServiceDirectory_DomainDetails"
+#define SERVICE_DIRECTORY_DOMAIN_UPDATE "ServiceDirectory_DomainUpdate"
 #define DIRECTORY_SERVICE "DirectoryService"
 
 using namespace std;
@@ -78,13 +80,13 @@ static void* registration(void* regData)
     gn->registerDataProduct(REGISTERED_PUBLISHERS, gravity::GravityTransportTypes::TCP);
 
     // Register the data product for domain broadcast details
-	gn->registerDataProduct("ServiceDirectory_DomainDetails", gravity::GravityTransportTypes::TCP);
+	gn->registerDataProduct(SERVICE_DIRECTORY_DOMAIN_DETAILS, gravity::GravityTransportTypes::TCP);
     
     // Register service for external requests
     gn->registerService(DIRECTORY_SERVICE, gravity::GravityTransportTypes::TCP, *provider);
 
 	// Register the data products for adding and removing domains
-	gn->registerDataProduct("ServiceDirectory_DomainUpdate",gravity::GravityTransportTypes::TCP);
+	gn->registerDataProduct(SERVICE_DIRECTORY_DOMAIN_UPDATE,gravity::GravityTransportTypes::TCP);
 
     return NULL;
 }
@@ -649,7 +651,7 @@ void ServiceDirectory::updateProductLocations(string productID, string url, uint
 
 	// Publish update
 	Log::debug("Publishing ServiceDirectory_DomainDetails");
-	GravityDataProduct gdp("ServiceDirectory_DomainDetails");
+	GravityDataProduct gdp(SERVICE_DIRECTORY_DOMAIN_DETAILS);
 	gdp.setData(providerMap);
 	gn.publish(gdp);
 }
@@ -1047,7 +1049,7 @@ void ServiceDirectory::publishDomainUpdateMessage(string updateDomain, string ur
 	updatePB.set_type(type == ADD? ServiceDirectoryDomainUpdatePB_UpdateType_ADD : 
 		ServiceDirectoryDomainUpdatePB_UpdateType_REMOVE);
 
-	GravityDataProduct gdp("ServiceDirectory_DomainUpdate");
+	GravityDataProduct gdp(SERVICE_DIRECTORY_DOMAIN_UPDATE);
 	gdp.setData(updatePB);
 	gn.publish(gdp);
 }

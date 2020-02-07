@@ -65,6 +65,11 @@
 
 #include "GravityNode.h" //Needs to be last on Windows so it is included after nb30.h for the DUPLICATE definition.
 
+#define REGISTERED_PUBLISHERS "RegisteredPublishers"
+#define SERVICE_DIRECTORY_DOMAIN_DETAILS "ServiceDirectory_DomainDetails"
+#define SERVICE_DIRECTORY_DOMAIN_UPDATE "ServiceDirectory_DomainUpdate"
+#define DIRECTORY_SERVICE "DirectoryService"
+
 static void* startSubscriptionManager(void* context)
 {
 	// Create and start the GravitySubscriptionManager
@@ -1455,6 +1460,16 @@ GravityReturnCode GravityNode::subscribeInternal(string dataProductID, const Gra
     }
 
 	Log::trace("Subscribing to [%s] and receiving cached values: %d", dataProductID.c_str(), receiveLastCachedValue);
+
+	//If a node that isn't the ServiceDirectory attempts to register a reserved data product ID.
+	if(dataProductID == REGISTERED_PUBLISHERS || 
+		dataProductID == SERVICE_DIRECTORY_DOMAIN_DETAILS || 
+		dataProductID == SERVICE_DIRECTORY_DOMAIN_UPDATE || 
+		dataProductID == DIRECTORY_SERVICE) 
+	{
+		Log::warning("Attempt to subscribe to forbidden data product id [%s]", dataProductID.c_str());
+		return GravityReturnCodes::FORBIDDEN_SUBSCRIPTION;
+	}
 	
 	vector<PublisherInfoPB> registeredPublishersInfo;
 	int tries = 5;
@@ -2509,7 +2524,8 @@ static std::map<GravityReturnCode,std::string> code_strings =
     {GravityReturnCodes::LINK_ERROR, "LINK_ERROR"},
     {GravityReturnCodes::INTERRUPTED, "INTERRUPTED"},
     {GravityReturnCodes::NO_SERVICE_PROVIDER, "NO_SERVICE_PROVIDER"},
-    {GravityReturnCodes::NO_PORTS_AVAILABLE, "NO_PORTS_AVAILABLE"}
+    {GravityReturnCodes::NO_PORTS_AVAILABLE, "NO_PORTS_AVAILABLE"},
+	{GravityReturnCodes::FORBIDDEN_SUBSCRIPTION, "FORBIDDEN_SUBSCRIPTION"}
   };
 
 
