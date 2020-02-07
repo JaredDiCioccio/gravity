@@ -7,12 +7,56 @@
 
 using namespace gravity;
 
+#define REGISTERED_PUBLISHERS "RegisteredPublishers"
+#define SERVICE_DIRECTORY_DOMAIN_DETAILS "ServiceDirectory_DomainDetails"
+#define SERVICE_DIRECTORY_DOMAIN_UPDATE "ServiceDirectory_DomainUpdate"
+#define DIRECTORY_SERVICE "DirectoryService"
+
+class TestSubscriber : public GravitySubscriber{
+    void subscriptionFilled(const std::vector< std::shared_ptr<gravity::GravityDataProduct> >& dataProducts)
+    {
+    }
+};
+
 TEST_CASE("Tests without the mocking framework") {
 
   GIVEN("A GravityReturnCode") {
     THEN("return that code in a string.") {
       GravityNode gravityNode;
       CHECK("SUCCESS" == gravityNode.getCodeString(GravityReturnCode::SUCCESS));
+    }
+  }
+
+  SUBCASE("Testing subscriptions"){
+    //only initializing gravity node once - will make it quicker to run
+    static GravityNode gn;
+    static bool init = true;
+    TestSubscriber testSubscriber;
+    if (init)
+    {
+      gn.init("Test");
+    }      
+    init = false;  
+
+    GIVEN("A valid data product id"){
+      THEN("Return SUCCESS"){
+        GravityReturnCode rc = gn.subscribe("ValidDataProductId", testSubscriber);
+        CHECK(rc == GravityReturnCodes::SUCCESS);
+      }
+    }
+
+    GIVEN("A forbidden data product id"){
+      THEN("Return FORBIDDEN_SUBSCRIPTION"){
+        GravityReturnCode rc;
+        rc = gn.subscribe(REGISTERED_PUBLISHERS, testSubscriber);
+        CHECK(rc == GravityReturnCodes::FORBIDDEN_SUBSCRIPTION);
+        rc = gn.subscribe(SERVICE_DIRECTORY_DOMAIN_DETAILS, testSubscriber);
+        CHECK(rc == GravityReturnCodes::FORBIDDEN_SUBSCRIPTION);
+        rc = gn.subscribe(SERVICE_DIRECTORY_DOMAIN_UPDATE, testSubscriber);
+        CHECK(rc == GravityReturnCodes::FORBIDDEN_SUBSCRIPTION);
+        rc = gn.subscribe(DIRECTORY_SERVICE, testSubscriber);
+        CHECK(rc == GravityReturnCodes::FORBIDDEN_SUBSCRIPTION);
+      }
     }
   }
 
